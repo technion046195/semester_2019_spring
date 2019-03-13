@@ -6,15 +6,13 @@ This repository contains the workshops, homework assignment and some auxiliary m
 
 ## Two suggested options for viewing the notebooks online:
 
-### NBViewer - Good for viewing and printing
+### NBViewer - Good for viewing and printing ([link](https://nbviewer.jupyter.org/github/technion046195/semester_2019_spring/tree/master/))
 
 The nbviewer makes the notebooks available as static web pages.
 
-TBA
 
-### Colab - Good for running, editing and sharing
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/technion046195/semester_2019_spring/blob/master/
+### Colab - Good for running, editing and sharing [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/technion046195/semester_2019_spring/blob/master/)
 
 This uses Google's Colabratory which runs an online free service of a slightly modified version of Jupyter Notebook.
 
