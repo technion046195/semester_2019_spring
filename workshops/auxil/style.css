@@ -1,0 +1,44 @@
+/* Fonts */
+/* Chalkboard font: KG Second Chances Sketch */
+@font-face {font-family: "KG Second Chances Sketch";
+    src: url("http://db.onlinewebfonts.com/t/7de4544cc3e616ff945907bf07e2f271.eot"); /* IE9*/
+    src: url("http://db.onlinewebfonts.com/t/7de4544cc3e616ff945907bf07e2f271.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("http://db.onlinewebfonts.com/t/7de4544cc3e616ff945907bf07e2f271.woff2") format("woff2"), /* chrome firefox */
+    url("http://db.onlinewebfonts.com/t/7de4544cc3e616ff945907bf07e2f271.woff") format("woff"), /* chrome firefox */
+    url("http://db.onlinewebfonts.com/t/7de4544cc3e616ff945907bf07e2f271.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+    url("http://db.onlinewebfonts.com/t/7de4544cc3e616ff945907bf07e2f271.svg#KG Second Chances Sketch") format("svg"); /* iOS 4.1- */
+}
+
+/* Workshop title */
+h1.workshop-title{
+    align:center;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    background-image:url(../../media/black-board.jpg);
+    /* background-size: 960px 640px;
+    width:960px;
+    height:640px; */
+    background-size: 720px 480px;
+    width:600px;
+    height:400px;
+    margin-top:0px !important;
+    font-size:60px;
+    line-height:2;
+    font-family:KG Second Chances Sketch;
+    color:white;
+    font-weight:normal;
+}
+
+h1.workshop-title .anchor-link{
+    position:absolute;
+    left:5000;
+}
+
+/* Title icons */
+/* .title_icon{
+    height:35px !important;
+    align:middle !important;
+    vertical-align:center !important;
+    display:inline !important;
+} */
