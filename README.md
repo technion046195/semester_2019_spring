@@ -14,7 +14,7 @@ The nbviewer makes the notebooks available as static web pages.
 
 ### Colab - Good for running, editing and sharing [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/technion046195/semester_2019_spring/blob/master/)
 
-This uses Google's Colabratory which runs an online free service of a slightly modified version of Jupyter Notebook.
+This uses Colabratory, a service from Google which runs a free online free modified version of Jupyter Notebook.
 
 ## Repository content
 

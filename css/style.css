@@ -14,7 +14,7 @@ h1.workshop-title{
     display:flex;
     align-items:center;
     justify-content:space-around;
-    background-image:url(../../media/black-board.jpg);
+    background-image:url(../media/black-board.jpg);
     /* background-size: 960px 640px;
     width:960px;
     height:640px; */
