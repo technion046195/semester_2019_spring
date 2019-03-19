@@ -1,17 +1,17 @@
 /* Fonts */
 /* Chalkboard font: KG Second Chances Sketch */
 @font-face {font-family: "KG Second Chances Sketch";
-    src: url("../lib/font/kg-second-chances-sketch/7de4544cc3e616ff945907bf07e2f271.eot"); /* IE9*/
-    src: url("../lib/font/kg-second-chances-sketch/7de4544cc3e616ff945907bf07e2f271.woff2") format("woff2"), /* chrome firefox */
-    url("../lib/font/kg-second-chances-sketch/7de4544cc3e616ff945907bf07e2f271.woff") format("woff"), /* chrome firefox */
-    url("../lib/font/kg-second-chances-sketch/7de4544cc3e616ff945907bf07e2f271.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
-    url("../lib/font/kg-second-chances-sketch/7de4544cc3e616ff945907bf07e2f271.svg#KG Second Chances Sketch") format("svg"); /* iOS 4.1- */
+    url("../lib/font/kg-second-chances-sketch.ttf") format("truetype");
+}
+/* Chalkboard font: KG Second Chances Sketch */
+@font-face {font-family: "Ultra";
+    src: url("../lib/font/ultra-regular.ttf") format("truetype");
 }
 
 .reveal section img { background:none; border:none; box-shadow:none; }
 
 /* Workshop title */
-h1.workshop-title{
+#notebook-container h1.workshop-title{
     align:center;
     display:flex;
     align-items:center;
@@ -31,7 +31,33 @@ h1.workshop-title{
     font-weight:normal;
 }
 
-h1.workshop-title .anchor-link{
+#notebook-container h1.workshop-title .anchor-link{
+    position:absolute;
+    left:5000;
+}
+
+/* Background title */
+#notebook-container h1.background-title{
+    align:center;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    /* background-image:url(https://images.unsplash.com/photo-1547584487-9037b59be4f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1778&q=80); */
+    /* background-size: 960px 640px;
+    width:960px;
+    height:640px; */
+    background-size: 720px 480px;
+    width:600px;
+    height:400px;
+    margin-top:0px !important;
+    font-size:35px;
+    line-height:2;
+    font-family:Ultra;
+    /* color:white; */
+    font-weight:normal;
+}
+
+h1.background-title .anchor-link{
     position:absolute;
     left:5000;
 }

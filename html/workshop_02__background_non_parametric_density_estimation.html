@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>workshop_01_intro</title>
+<title>workshop_02__background_non_parametric_density_estimation</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13129,37 +13129,20 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><h1 class="workshop-title">Workshop 01 Introduction</h1></center>
+<center><h1 class="background-title">Workshop 2 - Background<br>Probability & Non-Parametric Density Estimation</h1></center>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/doodle/96/000000/checklist.png"> Goals</h2>
-<p>These workshops come to accompany the lectures and recitations by taking another dive into the subjects of this course, but from a more "hands-on" approach. The purpose of the workshops is to achieve the following goals:</p>
-<ul>
-<li><strong>The primary goal</strong>: Improve the understanding and intuition behind the methods taught in the course by applying them to examples, and discussing the different nuances of each method.</li>
-</ul>
-<ul>
-<li><strong>The secondary goal</strong>: Provide tools for approaching and solving machine learning real problems in real life by using state of the art tools to problem sets which are based on real data.</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/plasticine/100/000000/numbered-list.png"> Structure</h2>
-<p>Apart from the first one, the workshops will have the following structure:</p>
-<ul>
-<li>A separate background section in which we will introduce the new topics. In class, we will only go through the highlights of this section.</li>
-<li>The main example section in which we will apply our tools to a given problem. We will usually do it in an iterative way of trial and error. This section will be accompanied by the code for the solution of the problem. In class, we will not dive into the code but only give a general overview of what it does. </li>
-<li>Some of the workshops will conclude with a theoretical section in which we will discuss and solve some more theoretical questions usually unrelated to the problem from the previous section.</li>
-</ul>
-<h3 id="Relation-to-Homework-Assignment">Relation to Homework Assignment<a class="anchor-link" href="#Relation-to-Homework-Assignment">&#182;</a></h3><p>The hands-on part ("wet" part) of the homework assignment will be of the same form of implementation section of the workshops.</p>
-<h3 id="A-comment-about-the-code">A comment about the code<a class="anchor-link" href="#A-comment-about-the-code">&#182;</a></h3><p>In many cases, the code or the algorithm in these workshops is not written in very efficient, since we have preferred to keep the code readable and to keep it as close as possible to the algorithm described in class. In almost all cases, there already exist packages implementing these algorithms, we have tried to give references to these implementations whenever they exist.</p>
+<h1><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/doodle/96/000000/books.png"> Background</h1>
+<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/plasticine/100/000000/slot-machine.png"> A Random Phenomenon</h2>
+<p>In most cases in machine learning, we will describe the process which generates the data as a random phenomenon.</p>
+<p>Let us have a short recap of the concepts we use to handle random phenomenons. As an example we will take a look at the following random phenomenon:</p>
+<blockquote><p>We take a glass full of juice and pure it on the floor (don't try this at home) and look at the shape of the resulting spill.</p>
+</blockquote>
+<p>Below is a table defining some of the concepts which we will be using when working with random phenomenons, along with the example of spilling the glass of juice.</p>
 
 </div>
 </div>
@@ -13167,587 +13150,66 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/office/80/000000/right.png"> This Workshop</h2>
-<p>In this workshop, we will mainly be discussing the process which we will be using for solving the problem. The rest of the workshops will mainly discuss the different approaches and methods which we can use when applying this process.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3>Why <img style="display:inline;height:50px" height="50px" src="https://www.python.org/static/community_logos/python-logo-master-v3-TM.png">?</h3>
-<p>Here are some motivational points for why we decided on teaching using Python, and why should you learn it?</p>
-<ul>
-<li>It is currently one of the most popular programming languages. (It is the 3rd most popular language, after C and Java, <a href="https://www.tiobe.com/tiobe-index/">according to this survey</a>)</li>
-<li>Almost all new frameworks in the field of machine learning are developed for python: PyTorch, TensorFlow, Keras, etc.</li>
-<li>It is a very powerful programing language and yet very simple to learn and to get started with. (<a href="https://xkcd.com/353/">See what XKCD has to say about it</a>)</li>
-<li>It's open-source (=&gt; free) with a huge community behind it.</li>
-<li>It has a ridiculously rich set of packages for almost any task. From basic mathematical tools(<a href="http://www.numpy.org/">basic numeric</a>, <a href="https://www.scipy.org/scipylib/index.html">advance numerics</a>, <a href="https://www.sympy.org">symbolic math</a> <a href="https://pandas.pydata.org/">data handling</a>, <a href="https://mode.com/blog/python-data-visualization-libraries">visualizing</a>, etc.), through a range of advanced frameworks for <a href="https://www.kdnuggets.com/2017/02/python-deep-learning-frameworks-overview.html">deep learning</a>, <a href="https://wiki.python.org/moin/ParallelProcessing">distributed computing</a>, <a href="https://www.djangoproject.com/">web servers</a>, etc. and up to stuff such as a complete framework for writing <a href="https://www.pygame.org">simple games</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/doodle/48/000000/float.png"> Jumping Into The Water</h2>
-<p>We will start by jumping directly into the water by applying a simple solution to a popular introductory problem</p>
-<p>At this point, we will do it in a very sloppy way, and the solution we will get will be very far from idle. The goal here is only to build the overall idea of the type of problems we will be trying to solve and the general process we are going to apply for solving them.</p>
-<p>We will later come back to this exact problem again and solve it using some more advanced tools while defining everything in a much more formal way.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2><a href="https://www.kaggle.com/c/titanic"><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/dusk/64/000000/cargo-ship.png"> The Titanic Prediction Problem</a></h2>
-<center><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/RMS_Titanic_3.jpg/1200px-RMS_Titanic_3.jpg" width=600px></center><p>In this problem, we would like to predict whether or not a given passenger has survived the Titanic tragedy based only the passengers' details in manifest which contains some cold facts such as age, sex, the ticket class, etc.</p>
-<p>To be able to come up with a good prediction method we are given a portion of the passenger manifest along with the data of whether or not these passengers have survived. The goal would be to be able to provide a good prediction for the survival chances for passengers outside this list.</p>
-<p>Here are some reasons to believe why we might be able to improve our guess based on these cold facts are:</p>
-<ol>
-<li>Mid-age people might be better swimmers then very young or old people, therefore their chances for survival might be higher.</li>
-<li>The different classes on board the Titanic were located in different areas of the boat, so maybe they were affected differently by the impact with the iceberg.</li>
-<li>It might be that most of the people on board the Titanic were in fact proper gentlemen and gave the women priority when boarding the lifeboats.</li>
-<li>etc.</li>
-</ol>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/plasticine/100/000000/process.png"> The workflow</h2>
-<p>Throughout the workshops, we will try to build and follow a certain workflow which we will apply to the problems we come to solve. For now, we will only give a general description of the process, and as we advance we will gain a better understanding and obtain more tools for applying in each of the steps. We will start with the following diagram and make some small adaptations to it as we advance in the course:</p>
-<center><img src="../media/diagrams/workflow_intro.png" width="300px" style="width:300px"/></center><p>This course we will mostly focus on the two steps of suggesting a model and a learning method and applying them.</p>
-<p>Let us try to understand this workflow by applying it to the problem at hand. For now, we will only give a very general description of each step, in a future workshop, we will provide a more in-depth descriptions for each of the steps.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Applying-the-Workflow">Applying the Workflow<a class="anchor-link" href="#Applying-the-Workflow">&#182;</a></h2><p>We will start by importing some useful packages</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Importing packages</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># Numerical package (mainly multi-dimensional arrays and linear algebra)</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># A package for working with data frames</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># A plotting package</span>
-
-<span class="o">%</span><span class="k">matplotlib</span> inline
-
-<span class="c1">## A function to add Latex (equations) to output which works also in Google Colabrtroy</span>
-<span class="c1">## In a regular notebook this could simply be replaced with &quot;display(Markdown(x))&quot;</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">HTML</span>
-<span class="k">def</span> <span class="nf">print_math</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>  <span class="c1"># Define a function to preview markdown outputs as HTML using mathjax</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;&lt;p&gt;&lt;script type=&quot;text/x-mathjax-config&quot;&gt;MathJax.Hub.Config({tex2jax: {inlineMath: [[</span><span class="se">\&#39;</span><span class="s1">$</span><span class="se">\&#39;</span><span class="s1">,</span><span class="se">\&#39;</span><span class="s1">$</span><span class="se">\&#39;</span><span class="s1">], [</span><span class="se">\&#39;\\\\</span><span class="s1">(</span><span class="se">\&#39;</span><span class="s1">,</span><span class="se">\&#39;\\\\</span><span class="s1">)</span><span class="se">\&#39;</span><span class="s1">]]}});&lt;/script&gt;&lt;script src=</span><span class="se">\&#39;</span><span class="s1">https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML</span><span class="se">\&#39;</span><span class="s1">&gt;&lt;/script&gt;&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;&lt;/p&gt;&#39;</span><span class="p">])))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/plasticine/100/000000/opened-folder.png"> Data collection</h2>
-<p>In our problem, we will only work with pre-collected datasets, and won't discuss this step at all. It is, however, vital to understand that this step is an integral part of the process and in many cases will be evolving over time to better fit the needs of the system.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/color/96/000000/view-file.png"> Data Inspection</h2>
-<p>Let us take a look at the dataset. In many cases, such as this one, it is convenient to store the data as a table (or a matrix) where:</p>
-<ul>
-<li>Each column represents one of the collected data fields. In our case: age, gender, ticket class, etc.</li>
-<li>Each row represents a single observation. In our case a single passenger. Each observation is called a sample.</li>
-</ul>
-<p>We will start by loading the data and taking a look at it by printing out the 10 first rows.</p>
-<ul>
-<li>The data can be found at <a href="https://technion046195.github.io/semester_2019_spring/datasets/titanic_manifest.csv">https://technion046195.github.io/semester_2019_spring/datasets/titanic_manifest.csv</a> </li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s1">&#39;https://technion046195.github.io/semester_2019_spring/datasets/titanic_manifest.csv&#39;</span>
-
-<span class="c1">## Loading the data</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-
-<span class="c1">## Print the number of rows in the data set</span>
-<span class="n">number_of_rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-<span class="n">print_math</span><span class="p">(</span><span class="s1">&#39;Number of rows in the dataset: $N=</span><span class="si">{}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number_of_rows</span><span class="p">))</span>
-
-<span class="c1">## Show the first 10 rows</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>Number of rows in the dataset: $N=1001$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[2]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>pclass</th>
-      <th>survived</th>
-      <th>name</th>
-      <th>sex</th>
-      <th>age</th>
-      <th>sibsp</th>
-      <th>parch</th>
-      <th>ticket</th>
-      <th>fare</th>
-      <th>cabin</th>
-      <th>embarked</th>
-      <th>boat</th>
-      <th>body</th>
-      <th>home.dest</th>
-      <th>numeric_sex</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>1</td>
-      <td>Allen, Miss. Elisabeth Walton</td>
-      <td>female</td>
-      <td>29</td>
-      <td>0</td>
-      <td>0</td>
-      <td>24160</td>
-      <td>211.3375</td>
-      <td>B5</td>
-      <td>S</td>
-      <td>2</td>
-      <td>NaN</td>
-      <td>St Louis, MO</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>0</td>
-      <td>Allison, Miss. Helen Loraine</td>
-      <td>female</td>
-      <td>2</td>
-      <td>1</td>
-      <td>2</td>
-      <td>113781</td>
-      <td>151.5500</td>
-      <td>C22 C26</td>
-      <td>S</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Montreal, PQ / Chesterville, ON</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>0</td>
-      <td>Allison, Mr. Hudson Joshua Creighton</td>
-      <td>male</td>
-      <td>30</td>
-      <td>1</td>
-      <td>2</td>
-      <td>113781</td>
-      <td>151.5500</td>
-      <td>C22 C26</td>
-      <td>S</td>
-      <td>NaN</td>
-      <td>135.0</td>
-      <td>Montreal, PQ / Chesterville, ON</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>0</td>
-      <td>Allison, Mrs. Hudson J C (Bessie Waldo Daniels)</td>
-      <td>female</td>
-      <td>25</td>
-      <td>1</td>
-      <td>2</td>
-      <td>113781</td>
-      <td>151.5500</td>
-      <td>C22 C26</td>
-      <td>S</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Montreal, PQ / Chesterville, ON</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>1</td>
-      <td>Anderson, Mr. Harry</td>
-      <td>male</td>
-      <td>48</td>
-      <td>0</td>
-      <td>0</td>
-      <td>19952</td>
-      <td>26.5500</td>
-      <td>E12</td>
-      <td>S</td>
-      <td>3</td>
-      <td>NaN</td>
-      <td>New York, NY</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>1</td>
-      <td>1</td>
-      <td>Andrews, Miss. Kornelia Theodosia</td>
-      <td>female</td>
-      <td>63</td>
-      <td>1</td>
-      <td>0</td>
-      <td>13502</td>
-      <td>77.9583</td>
-      <td>D7</td>
-      <td>S</td>
-      <td>10</td>
-      <td>NaN</td>
-      <td>Hudson, NY</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1</td>
-      <td>0</td>
-      <td>Andrews, Mr. Thomas Jr</td>
-      <td>male</td>
-      <td>39</td>
-      <td>0</td>
-      <td>0</td>
-      <td>112050</td>
-      <td>0.0000</td>
-      <td>A36</td>
-      <td>S</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Belfast, NI</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1</td>
-      <td>1</td>
-      <td>Appleton, Mrs. Edward Dale (Charlotte Lamson)</td>
-      <td>female</td>
-      <td>53</td>
-      <td>2</td>
-      <td>0</td>
-      <td>11769</td>
-      <td>51.4792</td>
-      <td>C101</td>
-      <td>S</td>
-      <td>D</td>
-      <td>NaN</td>
-      <td>Bayside, Queens, NY</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>1</td>
-      <td>0</td>
-      <td>Artagaveytia, Mr. Ramon</td>
-      <td>male</td>
-      <td>71</td>
-      <td>0</td>
-      <td>0</td>
-      <td>PC 17609</td>
-      <td>49.5042</td>
-      <td>NaN</td>
-      <td>C</td>
-      <td>NaN</td>
-      <td>22.0</td>
-      <td>Montevideo, Uruguay</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>1</td>
-      <td>0</td>
-      <td>Astor, Col. John Jacob</td>
-      <td>male</td>
-      <td>47</td>
-      <td>1</td>
-      <td>0</td>
-      <td>PC 17757</td>
-      <td>227.5250</td>
-      <td>C62 C64</td>
-      <td>C</td>
-      <td>NaN</td>
-      <td>124.0</td>
-      <td>New York, NY</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-Data-Fields-and-Types">The Data Fields and Types<a class="anchor-link" href="#The-Data-Fields-and-Types">&#182;</a></h3><p>For simplicity, in this exercise will limit ourselves to using only these three fields:</p>
-<ul>
-<li><em>numerical_sex</em>: the sex of the passenger as a number: 0 - male, 1 - female (a boolean).</li>
-<li><em>pclass</em>: the ticket's class: 1st, 2nd or 3rd (a class indicator).</li>
-<li><em>survived</em>: Whether or not this passenger has survived (a boolean)</li>
-</ul>
-<p>(A full description for each of the other columns can be found <a href="https://www.kaggle.com/c/titanic/data">here</a>)</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/doodle/96/000000/multi-edit.png"> Problem Definition</h2>
-<h3 id="The-Underlying-Process">The Underlying Process<a class="anchor-link" href="#The-Underlying-Process">&#182;</a></h3><p>In this step, we will define the process which generates the data, usually in a probabilistic manner. For now, we will choose to describe the process as some back box which randomly spits out pairs of some passenger parameters and an indicator of whether this passenger has survived or not. An important assumption we make on the process is that different outcomes are statistically independent.</p>
-<p>This process of randomly generating passengers and survival outcome can be thought of as the random chain of events which lead certain passengers to board the Titanic and the event which eventually resulted in whether or not they have survived.</p>
-<center><img width="500px" src="../media/diagrams/titanic_process.png?"/></center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We assume that the dataset was generate by apply this process $N$ times, with $N$ being the size of the dataset.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Evaluation-Method:-The-Misclassification-Rate">Evaluation Method: The Misclassification Rate<a class="anchor-link" href="#Evaluation-Method:-The-Misclassification-Rate">&#182;</a></h3><p>We still have not formally define what we mean by making a good prediction. In order to be able to pick the best prediction function, we must first define a way to evaluate different functions.</p>
-<p>We would usually want to be able to assign a numeric score of how <strong>bad</strong> a prediction function performs and then strive to pick the function with the lowest score. We would call this function the risk function.</p>
-<p>In this case, we will use a risk function called <em>the misclassification rate</em>. The misclassification rate is defined as the prediction errors a function makes on the data. Denoting:</p>
-<ul>
-<li>$N$ - as the number of sample in the data.</li>
-<li>$\boldsymbol{x}_i$ - the person parameters in the $i$'s sample, i.e., the vector of $\left(\text{gender},\text{class}\right)$ of the $i$'s passenger.</li>
-</ul>
-<p>The risk would be:</p>
-$$
-R\left\{h, \left\{\boldsymbol{x},y\right\}\right\}=\frac{1}{N}\sum_i I\left\{h\left(\boldsymbol{x}_i\right)\neq y_i\right\}
-$$<p><strong>A comment about naming</strong>: In many places, this function appears under different names. Other common names for this function are the cost function, the error function or the loss function.</p>
-<p>Although the name loss function is very commonly used, especially in deep learning, in our course, we will stick to the name risk and have a different definition for the term of a loss function.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Splitting-the-dataset">Splitting the dataset<a class="anchor-link" href="#Splitting-the-dataset">&#182;</a></h3><p>We will be using our dataset in two different tasks:</p>
-<ul>
-<li>Producing the prediction function.</li>
-<li>Evaluating the performance.</li>
-</ul>
-<p>This is a bit problematic, since in general, this will result in an optimistic result. The fact that our solution performs well on the given data does not necessarily mean that it will perform well on any new data.</p>
-<h4 id="A-Simple-Example">A Simple Example<a class="anchor-link" href="#A-Simple-Example">&#182;</a></h4><p>Let us suppose that the names of the passengers are part of the input data. In this case, we could propose a prediction method which memorizes the list of surviving passengers and makes a prediction based on that list. This method will perform great on the given data, but it would fail for any new data.</p>
-<p>A simple solution is to leave a portion of the dataset for the use of evaluation only. These two portions of the dataset are usually referred to as the <strong>train set</strong> and the <strong>test set</strong>.</p>
-<p>A common practice is to use an 80% train-20% test split. In most cases, it will be important to split the data randomly independently of the order of the sample in the original dataset.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Let us prepare our dataset and split it to the train set and test set.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Preparing the data set</span>
-<span class="c1">## Constructing x_{i,j} and y_i. Here i runs over the passengers and j runs over [gender, class]</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[[</span><span class="s1">&#39;numeric_sex&#39;</span><span class="p">,</span> <span class="s1">&#39;pclass&#39;</span><span class="p">]]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;survived&#39;</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="c1">## Generate a random generator with a fixed seed (this is important to make our result reproducible)</span>
-<span class="n">rand_gen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1">## Generating a vector of indices</span>
-<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
-
-<span class="c1">## Shuffle the indices</span>
-<span class="n">rand_gen</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
-
-<span class="c1">## Split the indices into 80% train / 20% test</span>
-<span class="n">n_samples_train</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_samples</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
-<span class="n">n_samples_test</span> <span class="o">=</span> <span class="n">n_samples</span> <span class="o">-</span> <span class="n">n_samples_train</span>
-<span class="n">train_indices</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[:</span><span class="n">n_samples_train</span><span class="p">]</span>
-<span class="n">test_indices</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="n">n_samples_train</span><span class="p">:]</span>
-
-<span class="c1">## Split the data</span>
-<span class="n">x_train</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_indices</span><span class="p">]</span>
-<span class="n">x_test</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_indices</span><span class="p">]</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_indices</span><span class="p">]</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_indices</span><span class="p">]</span>
-
-<span class="c1">## We could have directly shuffled and split the data, but in this way, we are still left with the original data and the indices which were used for the split which could be useful, especially for debugging. </span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/color/96/000000/idea-sharing.png"> Model &amp; Learning Method Suggestion</h2>
-<p>In this step, we would like to suggest a family of optional models which we can use for our problem. We would then have to search the space of suggested models to select the best model according to our evaluation method. I.e., we would search for the model which produces in the minimal risk. We should note here that in many cases, finding the model with the lowest risk is not possible and we would settle for the model with the lowest risk we can find.</p>
-<p>These family models will usually, but not always, be defined by a set of parameters. In such cases, we will use $\theta$ to denote these parameters.</p>
-<p>There are many consideration which come into account for selecting this family of models. We will point out three of them:</p>
-<ol>
-<li>It should be a set of models for which we have an efficient method for finding the model with the lowest risk.</li>
-<li>It should be a set of models which cover an extensive range of solutions in order to increase our chance of coming up with a solution which produces a low risk.</li>
-<li>As we will see, in many cases if the range of solution is too wide we will usually encounter a problem called overfitting. We will not go in to this subject in this workshop.</li>
-</ol>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In our example we will suggest a model for the prediction function $h\left(\boldsymbol{x}\right)$. In fact in this simple example, since  $h\left(\boldsymbol{x}\right)$ has only 6 possible inputs (2 gender x 3 classes), we can use 6 binary parameters to define the whole set of possible functions $h\left(\boldsymbol{x}\right)$.</p>
-$$
-h_\boldsymbol{\theta}\left(\boldsymbol{x}\right)=\left\{
-\begin{array}{ll}
-      \theta_{0, 1} &amp; \boldsymbol{x}=\left(0, 1\right) \\
-      \theta_{0, 2} &amp; \boldsymbol{x}=\left(0, 2\right) \\
-      \theta_{0, 3} &amp; \boldsymbol{x}=\left(0, 3\right) \\
-      \theta_{1, 1} &amp; \boldsymbol{x}=\left(1, 1\right) \\
-      \theta_{1, 2} &amp; \boldsymbol{x}=\left(1, 2\right) \\
-      \theta_{1, 3} &amp; \boldsymbol{x}=\left(1, 3\right) \\
-\end{array} 
-\right.
-$$<p><strong>reminder</strong>: $\boldsymbol{x}=\left(\text{gender}, \text{class}\right)$</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>As a more visually appealing way, we can also write it in the form of a table:</p>
 <table>
 <thead><tr>
-<th>Sex \ Class</th>
-<th>1st class</th>
-<th>2nd Class</th>
-<th>3rd class</th>
+<th style="text-align:left">name</th>
+<th>Usually donated by</th>
+<th>Definition</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Male (0)</td>
-<td>$\theta_{0,1}$</td>
-<td>$\theta_{0,2}$</td>
-<td>$\theta_{0,3}$</td>
+<td style="text-align:left"><strong>A random phenomenon</strong><br><br><br><br></td>
+<td>-</td>
+<td>Some process which generates random outcomes</td>
+<td>Spilling a glass of juice on the floor and examining at the shape of the spill</td>
 </tr>
 <tr>
-<td>Female (1)</td>
-<td>$\theta_{1,1}$</td>
-<td>$\theta_{1,2}$</td>
-<td>$\theta_{1,3}$</td>
+<td style="text-align:left"><strong>A sample</strong><br><br><br><br></td>
+<td>$\omega$</td>
+<td>A single outcome of the process</td>
+<td>Some specific spill shape</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Sample space</strong><br><br><br><br></td>
+<td>$\Omega$</td>
+<td>The space of all possible outcomes of the given process. $\Omega=\left\{\forall\omega\right\}$</td>
+<td>The space of all possible spill shapes</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Random Variables</strong><br><br><br><br></td>
+<td>$X\left(\omega\right)$,$Y\left(\omega\right)$,...</td>
+<td>A function $X:\Omega\rightarrow\mathbb{R}$ which assigns a real number to a given sample</td>
+<td>A function which returns the perimeter of a spill:<br>$X_1\left(\omega\right)$<br>A function which returns the area of a spill:<br> $X_2\left(\omega\right)$</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>An event</strong><br><br><br><br></td>
+<td>$A$</td>
+<td>A collection of events, i.e., a subset of the sample space $A\subseteq\Omega$.<br>We would often define an event through a condition on random variables.</td>
+<td>The collection of all spills with a perimeter smaller than 2:<br>$A=\left\{\omega: X_1\left(\omega\right)&lt;2 \right\}$<br>The collection of all spills with a area larger than 1:<br>$B=\left\{\omega: X_2\left(\omega\right)&gt;1 \right\}$</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Event space</strong><br><br><br><br></td>
+<td>$\mathcal{F}$</td>
+<td>A space of events. $A\in\mathcal{F}$</td>
+<td>The space of all possible collections of spills shape</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Probability measure</strong><br><br><br><br></td>
+<td>$P\left(A\right)$</td>
+<td>A function $P:\mathcal{F}\rightarrow\left[0,1\right]$ which returns the probability of a random sample to be an element in some event $A$</td>
+<td>$P\left(A\right)=P\left(X_1&lt;2\right)=0.1$<br>$P\left(X_1&lt;0\right)=P\left(\emptyset\right)=0$<br>$P\left(0\leq X_1\right)=P\left(\Omega\right)=1$<br>$P\left(A\cup B\right)=P\left(X_1&lt;2\ \text{or}\ X_2&gt;1\right)=0.6$<br>$P\left(A\cap B\right)=P\left(X_1&lt;2\ \text{and}\ X_2&gt;1\right)=0.01$</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Conditional probability measure</strong><br><br><br><br></td>
+<td>$P\left(AǀB\right)$</td>
+<td>A function $P:\mathcal{F}_1\times\mathcal{F}_2\rightarrow\left[0,1\right]$ which returns the probability of a random sample to be an element in event $A$ given that it is an element in event $B$</td>
+<td>The probability of a spill to have a diameter smaller than 2, given that it has a area larger than 1:<br>$P\left(AǀB\right)=P\left(X_1&lt;2ǀX_2&gt;1\right)=0.02$</td>
 </tr>
 </tbody>
 </table>
+<p>In the last two rows we have used $X&lt;2$ as a shorthand for $\left\{\omega:X\left(\omega\right)&lt;2\right\}$. This is in fact a common shorthand writing and we will usually be using it from here on.</p>
 
 </div>
 </div>
@@ -13755,31 +13217,18 @@ $$<p><strong>reminder</strong>: $\boldsymbol{x}=\left(\text{gender}, \text{class
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Only for demonstrating the process, we will start with an even more simplified model for $h_\boldsymbol{\theta}\left(\boldsymbol{x}\right)$. We will start with the family of constant functions, i.e., $h_\theta\left(\boldsymbol{x}\right)=\theta$</p>
-<table>
-<thead><tr>
-<th>Sex \ Class</th>
-<th>1st class</th>
-<th>2nd Class</th>
-<th>3rd class</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Male (0)</td>
-<td>$\theta$</td>
-<td>$\theta$</td>
-<td>$\theta$</td>
-</tr>
-<tr>
-<td>Female (1)</td>
-<td>$\theta$</td>
-<td>$\theta$</td>
-<td>$\theta$</td>
-</tr>
-</tbody>
-</table>
-<p>Our method for finding the constant function, or equivalently the $\theta$, which produces the lowest risk would be to test all possible options. Since we are talking about a binary prediction function, there are only 2 options: $h_{\theta=0}\left(\boldsymbol{x}\right)=0$ and  $h_{\theta=1}\left(\boldsymbol{x}\right)=1$,</p>
+<p><br></p>
+<center><img src="../media/diagrams/random_process.png?2" style="width:700px"/></center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/ultraviolet/40/000000/normal-distribution-histogram.png"> Distributions</h2>
+<p><strong>Realizations</strong>: The outcomes of the random variable, i.e., the output value we get for a random outcome of the process, is called realization. We usually denote random variables by upper case letter and denote their realization using the equivalent lower case one, for example, the random variable $X$ and its realization $x$.</p>
+<p>In many cases, the term samples is used to refer to the realizations themselves without making the distinction between the actual samples and the result of the random variable operating in them.</p>
+<p>The distribution of a random variable describes the probability of getting realizations values. The distribution is usually described by one of the following functions.</p>
 
 </div>
 </div>
@@ -13787,87 +13236,9 @@ $$<p><strong>reminder</strong>: $\boldsymbol{x}=\left(\text{gender}, \text{class
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/plasticine/100/000000/services.png"> Learning</h2>
-<p>Here we will usually apply some fancy method for selecting the best method, in this case, we simply need to evaluate the risk for the two options of $\theta=0$ and $\theta=1$ and one which produces the lower result.</p>
-<p>Formally we would like to find the optimal value of $\theta$, which we will denote as $\theta^*$, for which:</p>
+<h3 id="The-Cumulative-Distribution-Function-(the-CDF)">The Cumulative Distribution Function (the CDF)<a class="anchor-link" href="#The-Cumulative-Distribution-Function-(the-CDF)">&#182;</a></h3><p>The CDF of a random variable $X$ is usually denoted by $F_X\left(x\right)$ and is defined as:
 $$
-\theta^*
-=\underset{\theta\in\left\{0,1\right\}}{\arg\min}\  R\left\{h_{\theta}, \left\{\boldsymbol{x} ,y\right\}\right\}
-=\underset{\theta\in\left\{0,1\right\}}{\arg\min}\  \frac{1}{N}\sum_i I\left\{\theta\neq y_i\right\}
-$$<p>Let us calculate the risk for each $\theta$ (note that we will only be using the train set for this task) :</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Loop over the two possible theta</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The train risk for each predictor is:&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
-    <span class="c1">## The number of worng prediction for theta:</span>
-    <span class="n">predictions</span> <span class="o">=</span> <span class="n">theta</span>
-    <span class="n">train_risk</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">values</span> <span class="o">!=</span> <span class="n">predictions</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-    <span class="n">print_math</span><span class="p">(</span><span class="s1">&#39;- $R_</span><span class="se">\\</span><span class="s1">text{{train}}</span><span class="se">\\</span><span class="s1">{{ h_{{ </span><span class="se">\\</span><span class="s1">theta=</span><span class="si">{}</span><span class="s1"> }} </span><span class="se">\\</span><span class="s1">}}=</span><span class="si">{:.02}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">train_risk</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>The train risk for each predictor is:
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>- $R_\text{train}\{ h_{ \theta=0 } \}=0.42$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>- $R_\text{train}\{ h_{ \theta=1 } \}=0.58$</p>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In this case, constantly predicting zero performs slightly better than constantly predicting one.</p>
-<p>This is due to the fact that the majority of passengers did not survive the crash, therefore without knowing any details about the passenger we have a better change predicting that he did not survive.</p>
-<p>Our proposed prediction function would be:
-$$
-h\left(\boldsymbol{x}\right)=0\quad\forall\boldsymbol{x}
+F_{X}\left(x\right)=P\left(X\leq x\right)
 $$</p>
 
 </div>
@@ -13876,414 +13247,52 @@ $$</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/color/96/000000/speedometer.png"> Performance evaluation</h2>
-<p>As stated before would like to do the evaluating of the risk on the test set. Let us calculate the risk using the test set.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## The evaluation of the final risk</span>
-<span class="n">predictions</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">test_risk</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">values</span> <span class="o">!=</span> <span class="n">predictions</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">print_math</span><span class="p">(</span><span class="s1">&#39;The test risk is: $R_</span><span class="se">\\</span><span class="s1">text{{test}}</span><span class="se">\\</span><span class="s1">{{ h_{{ </span><span class="se">\\</span><span class="s1">theta=0 }} </span><span class="se">\\</span><span class="s1">}}=</span><span class="si">{:.02}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">test_risk</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>The test risk is: $R_\text{test}\{ h_{ \theta=0 } \}=0.4$</p>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We would now want to suggest a way to improve our learning method.</p>
-<p>In this case, the obvious way to get improvement is by replacing the naive model which we have used. Let us go back to the model suggestion stage.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/color/96/000000/idea-sharing.png"> Model &amp; Learning method suggestion - 2nd Attempt</h2>
-<p>Let us now return to the full model for $h_\boldsymbol{\theta}\left(\boldsymbol{x}\right)$ which covers all the possible all possible $2^6$ combinations for selecting $\boldsymbol{\theta}=\left(\theta_{0,1},..,\theta_{1,3}\right)^T$.</p>
-<p>It could be shown that in this case, that we can find the optimal selection of the $\theta_{m,n}$'s by looking at each one of them individually and minimize the risk on the group of passengers with $X=\left(m,n\right)$. I.e.</p>
+<h3 id="The-Probability-Density-Function-(the-PDF)---For-a-Continues-Random-Variable">The Probability Density Function (the PDF) - For a Continues Random Variable<a class="anchor-link" href="#The-Probability-Density-Function-(the-PDF)---For-a-Continues-Random-Variable">&#182;</a></h3><p><em>Not the documents file format</em> 😉</p>
+<p>The PDF of a random variable $X$ is usually denoted by $f_X\left(x\right)$ or $p_X\left(x\right)$ and is defined as a function for which:</p>
 $$
-\theta_{m,n}^*
-=\underset{\theta_{m,n}\in\left\{0,1\right\}}{\arg\min}\  R\left\{h_{\boldsymbol{\theta}}, \left\{\boldsymbol{x}_i ,y_i:\boldsymbol{x}_i=\left(m,n\right)\right\}\right\}
-=\underset{\theta_{m,n}\in\left\{0,1\right\}}{\arg\min}\ \frac{1}{N_{m,n}}\sum_{i,\boldsymbol{x}_i=\left(m,n\right)} I\left\{\theta_{m,n}\neq y_i\right\}
-$$<p>with $m\in\left\{0,1\right\}$ (the gender) and $n\in\left\{1,2,3\right\}$ (the class)</p>
-
+F_X\left(x\right)=\int_{-\infty}^{x}p_X\left(x\right)dx
+$$<p>If $F_X\left(x\right)$ is differentiable the:</p>
+$$
+p_X\left(x\right)=\frac{d}{dx}F_X\left(x\right)
+$$
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The train risk for each group is:&#39;</span><span class="p">)</span>
-<span class="c1">## loop over the gender</span>
-<span class="k">for</span> <span class="n">gender</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
-    <span class="c1">## loop over the class</span>
-    <span class="k">for</span> <span class="n">class_</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>  <span class="c1"># we have used &quot;class_&quot; since the word &quot;class&quot; is already in use by python</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>  <span class="c1"># An empty line</span>
-        <span class="n">print_math</span><span class="p">(</span><span class="s1">&#39;## For $</span><span class="se">\\</span><span class="s1">{{</span><span class="se">\\</span><span class="s1">boldsymbol{{x}}_i,y_i:</span><span class="se">\\</span><span class="s1">boldsymbol{{x}}_i=(</span><span class="si">{}</span><span class="s1">,</span><span class="si">{}</span><span class="s1">) </span><span class="se">\\</span><span class="s1">}}$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gender</span><span class="p">,</span> <span class="n">class_</span><span class="p">))</span>
-        <span class="c1">## Loop over the two possible theta</span>
-        <span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
-            <span class="c1">## The number of worng prediction for theta:</span>
-            <span class="n">predictions</span> <span class="o">=</span> <span class="n">theta</span>
-            <span class="n">indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;numeric_sex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">==</span> <span class="n">gender</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;pclass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">==</span> <span class="n">class_</span><span class="p">)</span>
-            <span class="n">train_risk</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">!=</span> <span class="n">predictions</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-            <span class="n">print_math</span><span class="p">(</span><span class="s1">&#39;-- $</span><span class="se">\\</span><span class="s1">theta_{{ </span><span class="si">{}</span><span class="s1">,</span><span class="si">{}</span><span class="s1"> }}=</span><span class="si">{}</span><span class="s1"> \Rightarrow R_{{</span><span class="se">\\</span><span class="s1">text{{train}}}}</span><span class="se">\\</span><span class="s1">{{h_{{ </span><span class="se">\\</span><span class="s1">boldsymbol{{</span><span class="se">\\</span><span class="s1">theta}} }}</span><span class="se">\\</span><span class="s1">}}=</span><span class="si">{:0.2f}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gender</span><span class="p">,</span> <span class="n">class_</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">train_risk</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>The train risk for each group is:
-
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>## For $\{\boldsymbol{x}_i,y_i:\boldsymbol{x}_i=(0,1) \}$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>-- $\theta_{ 0,1 }=0 \Rightarrow R_{\text{train}}\{h_{ \boldsymbol{\theta} }\}=0.39$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>-- $\theta_{ 0,1 }=1 \Rightarrow R_{\text{train}}\{h_{ \boldsymbol{\theta} }\}=0.61$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>## For $\{\boldsymbol{x}_i,y_i:\boldsymbol{x}_i=(0,2) \}$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>-- $\theta_{ 0,2 }=0 \Rightarrow R_{\text{train}}\{h_{ \boldsymbol{\theta} }\}=0.12$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>-- $\theta_{ 0,2 }=1 \Rightarrow R_{\text{train}}\{h_{ \boldsymbol{\theta} }\}=0.88$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>## For $\{\boldsymbol{x}_i,y_i:\boldsymbol{x}_i=(0,3) \}$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>-- $\theta_{ 0,3 }=0 \Rightarrow R_{\text{train}}\{h_{ \boldsymbol{\theta} }\}=0.17$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>-- $\theta_{ 0,3 }=1 \Rightarrow R_{\text{train}}\{h_{ \boldsymbol{\theta} }\}=0.83$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>## For $\{\boldsymbol{x}_i,y_i:\boldsymbol{x}_i=(1,1) \}$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>-- $\theta_{ 1,1 }=0 \Rightarrow R_{\text{train}}\{h_{ \boldsymbol{\theta} }\}=0.97$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>-- $\theta_{ 1,1 }=1 \Rightarrow R_{\text{train}}\{h_{ \boldsymbol{\theta} }\}=0.03$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>## For $\{\boldsymbol{x}_i,y_i:\boldsymbol{x}_i=(1,2) \}$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>-- $\theta_{ 1,2 }=0 \Rightarrow R_{\text{train}}\{h_{ \boldsymbol{\theta} }\}=0.90$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>-- $\theta_{ 1,2 }=1 \Rightarrow R_{\text{train}}\{h_{ \boldsymbol{\theta} }\}=0.10$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>## For $\{\boldsymbol{x}_i,y_i:\boldsymbol{x}_i=(1,3) \}$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>-- $\theta_{ 1,3 }=0 \Rightarrow R_{\text{train}}\{h_{ \boldsymbol{\theta} }\}=0.47$</p>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>-- $\theta_{ 1,3 }=1 \Rightarrow R_{\text{train}}\{h_{ \boldsymbol{\theta} }\}=0.53$</p>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Therefore our optimal predictor $\boldsymbol{\theta}^*$ will be constructed by choosing for each $\theta_{m,n}$ the values which minimizes the risk:</p>
-<table>
-<thead><tr>
-<th>Sex \ Class</th>
-<th>1st class</th>
-<th>2nd Class</th>
-<th>3rd class</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Male (0)</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Female (1)</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
+<h3 id="The-Probability-Mass-Function-(the-PMF)---For-a-Discrete-Random-Variable">The Probability Mass Function (the PMF) - For a Discrete Random Variable<a class="anchor-link" href="#The-Probability-Mass-Function-(the-PMF)---For-a-Discrete-Random-Variable">&#182;</a></h3><p>The PMF of a random variable $X$ is also usually denoted by $f_X\left(x\right)$ or $p_X\left(x\right)$ and is defined as:</p>
+$$
+p_X\left(x\right)=P\left(X=x\right)
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/ultraviolet/80/000000/average-math.png"> Expectation Value</h2>
+<p>In the discrete case, the expectation value of a random variable $X$ is the weighted average of the outcomes random variable can produce, where the weights are the probability assigned to each outcome, i.e., the PMF. We will denote it by $\mathbb{E}\left[x\right]$. It is calculated by:
+$$
+\mathbb{E}\left[x\right]=\sum_{x\in\left\{X\left(\omega\right),\omega\in\Omega\right\}} x\cdot p_X\left(x\right)
+$$</p>
+<p>Where $\left\{X\left(\omega\right),\omega\in\Omega\right\}$ represents the space of all possible outcomes of the random variable $X$.</p>
+<p>It can be shown that the expectation value of the random variable $g\left(X\left(\omega\right)\right)$, for any given $g$, can be calculated as:</p>
+$$
+\mathbb{E}\left[g\left(x\right)\right]=\sum_{g\left(x\right)} g\left(x\right)\cdot p_{g\left(X\right)}\left(g\left(x\right)\right)=\sum_{x} g\left(x\right)\cdot p_X\left(x\right)
+$$<p>In the continues case, the expectation value is calculated by:</p>
+$$
+\mathbb{E}\left[g\left(x\right)\right]=\int_{-\infty}^\infty g\left(x\right)\cdot p_X\left(x\right)dx
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/doodle/96/000000/tape-measure.png"> Estimating the distribution</h2>
+<p>In the context of machine learning, we would like to estimate the unknown distribution of a random variable based on a set of samples of it which we will call the dataset. <strong>We will always assume here that the samples in the dataset are statistically independent</strong>.</p>
+<p>We will usually denote an estimation of some value $x$ using the "hat" sign: $\hat{x}$.</p>
 
 </div>
 </div>
@@ -14291,90 +13300,126 @@ $$<p>with $m\in\left\{0,1\right\}$ (the gender) and $n\in\left\{1,2,3\right\}$ (
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/color/96/000000/speedometer.png"> Performance evaluation</h2>
-<p>Let us calculate the risk for this prediction function</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## The optimal predictor</span>
-
-<span class="c1">## We will define a prediction function which recives a row in the </span>
-<span class="c1">## dataset as an input and outputs a predition</span>
-<span class="k">def</span> <span class="nf">row_predictor</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-    <span class="n">gender</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;numeric_sex&#39;</span><span class="p">]</span>
-    <span class="n">class_</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;pclass&#39;</span><span class="p">]</span>
-    
-    <span class="n">prediction_map</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="p">}</span>
-    
-    <span class="n">prediction</span> <span class="o">=</span> <span class="n">prediction_map</span><span class="p">[(</span><span class="n">gender</span><span class="p">,</span> <span class="n">class_</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="n">prediction</span>
-
-<span class="c1">## Apllying the predicion function to every line in the table</span>
-<span class="n">predictions</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">row_predictor</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
-
-<span class="c1">## The evaluation of the final risk</span>
-<span class="n">test_risk</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">values</span> <span class="o">!=</span> <span class="n">predictions</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">print_math</span><span class="p">(</span><span class="s1">&#39;The test risk is: $R_</span><span class="se">\\</span><span class="s1">text{{test}}</span><span class="se">\\</span><span class="s1">{{ h_{{ </span><span class="se">\\</span><span class="s1">boldsymbol{{</span><span class="se">\\</span><span class="s1">theta}}^* }} </span><span class="se">\\</span><span class="s1">}}=</span><span class="si">{:.02}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">test_risk</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>The test risk is: $R_\text{test}\{ h_{ \boldsymbol{\theta}^* } \}=0.23$</p>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This mean that by using this predictor we have will be able to give a correct prediction about 77% of the time.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/cotton/64/000000/filter.png"> Conclusion</h2>
-<p>We have seen how we can use a dataset to build a model which we can now be used to make predictions on data we have not seen yet. We did so following a general workflow which we have described.</p>
-<p>In almost all of the problems which we will solve in these workshops, we will follow this workflow. The parts which will change from one problem/solution to another is:</p>
+<h3 id="Empirical-Measure">Empirical Measure<a class="anchor-link" href="#Empirical-Measure">&#182;</a></h3><p>Before evaluating distributions let us define the empirical measure and empirical mean.</p>
+<p>The empirical measure is an estimation of a probability measure given a set of samples. Using the following notation:</p>
 <ul>
-<li>The problem, goal and evaluation method.</li>
-<li>The part of the system which we will be modeling.</li>
-<li>The set of models we will be using in the model suggestion step.</li>
-<li>The learning method which we will be using for selecting a good model from within the set of models.</li>
-<li>Some additional variations of the learning method, which deal with a problem called overfitting.</li>
+<li>$N$ - the number of samples in the dataset.</li>
+<li>$\omega_i$ - the $i$-th sample.</li>
+<li>$I\left\{\omega_i \in A\right\}$ - An indicator function of whether or not $\omega_i$ is an element in event $A$.</li>
 </ul>
+<p>The empirical measure of the probability measure $P\left(A\right)$ is defined as:</p>
+$$
+\hat{p}_A=\tfrac{1}{N}\sum_{i=1}^N I\left\{\omega_i\in A\right\}
+$$<p>Put in words, we estimate the probability of an event as the fraction of samples in the dataset which are members of the event.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Empirical-Mean">Empirical Mean<a class="anchor-link" href="#Empirical-Mean">&#182;</a></h3><p>The empirical mean is a way to estimates the value of an expectation value given a set of samples. Adding the following notation:</p>
+<ul>
+<li>$x_i$ - the realization value of the $i$-th sample, i.e., $X\left(\omega_i\right)$. <strong>From here on we will refer to $X_i$ is as the $X$ value of the $i$-th sample.</strong></li>
+</ul>
+<p>The empirical mean of the expectation value $\mathbb{E}\left[f\left(x\right)\right]$ is then defined as:</p>
+$$
+\hat{\mu}_{f\left(x\right)}=\tfrac{1}{N}\sum_{i=1}^N f\left(x_i\right)
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/color/96/000000/bar-chart.png"> Estimating the PMF</h2>
+<p>We can use the empirical measure we can estimate the PMF of a random variable $X$. We shall denote:</p>
+<ul>
+<li>$N$ - the number of samples in the dataset.</li>
+<li>$x_i$ - the $X$ value of the $i$-th sample.</li>
+<li>$I\left\{x_i = x\right\}$ - An indicator function of whether or not $x_i$ is equal to $x$.</li>
+</ul>
+<p>The PMF estimation of $p_{X}\left(x\right)$ is then given by:
+$$
+\hat{p}_{X}\left(x\right)=\tfrac{1}{N}\sum_{i=1}^N I\left\{x_i = x\right\}
+$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/plasticine/100/000000/bullish.png"> The Empirical Cumulative Distribution Function (the ECDF)</h2>
+<p>Similarly, we can CDF of a random variable $X$. We shall denote:</p>
+<ul>
+<li>$N$ - the number of samples in the dataset.</li>
+<li>$x_i$ - the $X$ value of the $i$-th sample.</li>
+<li>$I\left\{x_i \leq x\right\}$ - An indicator function of whether or not $x_i$ is smaller then $x$.</li>
+</ul>
+<p>The ECDF estimation of the CDF $F_{X}\left(x\right)$ is then given by:
+$$
+\hat{F}_{X}\left(x\right)=\tfrac{1}{N}\sum_{i=1}^N I\left\{x_i \leq x\right\}
+$$</p>
+<p>The ECDF results in a non-continues CDF which is a sum of step functions.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/doodle/48/000000/bar-chart.png"> Histogram</h2>
+<p>A histogram is constructed by dividing the range of possible outcomes a random variable can take into bins and then estimating the probability density (the value of the PDF) in each bin in a manner similar to the PMF estimation. We shall denote:</p>
+<ul>
+<li>$N$ the number of samples of the random variable $X$.</li>
+<li>$x_i$ - the $X$ value of the $i$-th sample.</li>
+<li>$l_k$, $r_k$ - The left and right edges of the $k$'s bin.</li>
+<li>$I\left\{l_k \leq x_i &lt; r_k\right\}$ - An indicator function of whether or not $x_i$ is the $k$'s bin</li>
+</ul>
+<p>The histogram which estimates the PDF $p_X\left(x\right)$ is given by:
+$$
+h_X\left(l_k \leq x &lt; r_k\right) = \tfrac{1}{N\cdot\left(r_k-l_k\right)}\sum_{i=1}^N I\left\{l_k \leq x_i &lt; r_k\right\}
+$$</p>
+<p>the additional division by $\left(r_k-l_k\right)$ is to produce a probability density from the estimated probability.</p>
+<p><em>The actual calculation for when and how good is this approximation is outside the scope of this course.</em></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The selection of the bins significantly effects how well the histogram approximates the PDF. A common thumb rule for selecting the bins is to divide the range of values into $\sqrt{N}$ equal bins.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/ultraviolet/64/000000/chromatography.png"> Kernel Density Estimation (KDE)</h2>
+<p>KDE is another method for estimating the PDF. In KDE the samples are smoothed out using a smoothing function called the <strong>Parzan window</strong>.</p>
+<p>One way of understanding the resulting PDF is by thinking of it as a PDF which was generated by placing a Dirac delta function in each sampled value and then smoothing it out using the Parzen window.</p>
+<p>We shall denote:</p>
+<ul>
+<li>$N$ the number of samples of the random variable $X$.</li>
+<li>$x_i$ - the $X$ value of the $i$-th sample.</li>
+<li>$\phi\left(x\right)$ - the selected Parzen window.</li>
+</ul>
+<p>The KDE which estimates the PDF $p_X\left(x\right)$ is given by:
+$$
+\hat{p}_{\phi,X}\left(x\right) = \frac{1}{N}\sum_{i=1}^N \phi\left(x-x_i\right)
+$$</p>
+<p>It is common to add a scaling factor $h$, called the bandwidth, to the Parzen window to control the width of the window. We shall denote the scaled version of the window by $\phi_h\left(x\right)=\frac{1}{h}\phi\left(\frac{x}{h}\right)$. Plugging this into the definition of the KDE, we get:</p>
+$$
+\hat{p}_{\phi,h,X}\left(x\right) = \frac{1}{N\cdot h}\sum_{i=1}^N \phi\left(\frac{x-x_i}{h}\right)
+$$<p>Two common choices of the Parzen window are:</p>
+<ul>
+<li>A Gaussian: $\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{x^2}{2}\right)$</li>
+<li>A rectangular function $I\left\{\left|x\right|\leq0.5\right\}$</li>
+</ul>
+<p>A thumb rule for selecting the bandwidth for the Gaussian window is: $\left(\frac{4\cdot\text{std}\left\{x_i\right\}}{3N}\right)^\frac{1}{5}$</p>
 
 </div>
 </div>
@@ -14394,7 +13439,7 @@ $$<p>with $m\in\left\{0,1\right\}$ (the gender) and $n\in\left\{1,2,3\right\}$ (
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%html</span>
