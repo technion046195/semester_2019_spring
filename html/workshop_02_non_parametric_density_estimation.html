@@ -13780,7 +13780,7 @@ $$<p>Which is equal to:</p>
 <li>Calculate and plot the histogram of the duration for the case of 30, 300 and 3000 bins.</li>
 <li>Split the train set into 8 equal subsets and calculate the histogram for each of the subsets. What can you say about the variability of the bins height as a function of the number of bins?</li>
 </ol>
-<p><em>Reminder: the thumb rule suggests to use a number of bins equal to $\sqrt{N}=\sqrt{80000}\approx 280$</em></p>
+<p><em>Reminder: the rule of thumb suggests to use a number of bins equal to $\sqrt{N}=\sqrt{80000}\approx 280$</em></p>
 
 </div>
 </div>
@@ -14028,7 +14028,7 @@ $$<p>Which is equal to:</p>
 <p>Add on the same axes the plot of a histogram with 300 bins for comparison.</p>
 </li>
 </ol>
-<p><em>Reminder: the thumb rule suggests a width of: $\left(\frac{4\cdot\text{std}\left\{x_i\right\}}{3N}\right)^\frac{1}{5}$</em></p>
+<p><em>Reminder: the rule of thumb suggests a width of: $\left(\frac{4\cdot\text{std}\left\{x_i\right\}}{3N}\right)^\frac{1}{5}$</em></p>
 
 </div>
 </div>
@@ -14047,7 +14047,7 @@ $$<p>Which is equal to:</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Calculate the suggested bandwidth</span>
 <span class="n">suggested_bandwidth</span> <span class="o">=</span> <span class="mf">1.06</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_samples</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mf">5.</span><span class="p">)</span>
-<span class="n">print_math</span><span class="p">(</span><span class="s1">&#39;The tumb rule suggested bandwidth is $</span><span class="se">\\</span><span class="s1">left(</span><span class="se">\\</span><span class="s1">frac{{4</span><span class="se">\\</span><span class="s1">cdot</span><span class="se">\\</span><span class="s1">text{{std}}</span><span class="se">\\</span><span class="s1">left</span><span class="se">\\</span><span class="s1">{{x_i</span><span class="se">\\</span><span class="s1">right</span><span class="se">\\</span><span class="s1">}}}}{{3N}}</span><span class="se">\\</span><span class="s1">right)^</span><span class="se">\\</span><span class="s1">frac{{1}}{{5}}</span><span class="se">\\</span><span class="s1">approx</span><span class="si">{:.03f}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">suggested_bandwidth</span><span class="p">))</span>
+<span class="n">print_math</span><span class="p">(</span><span class="s1">&#39;The rule of thumb suggested bandwidth is $</span><span class="se">\\</span><span class="s1">left(</span><span class="se">\\</span><span class="s1">frac{{4</span><span class="se">\\</span><span class="s1">cdot</span><span class="se">\\</span><span class="s1">text{{std}}</span><span class="se">\\</span><span class="s1">left</span><span class="se">\\</span><span class="s1">{{x_i</span><span class="se">\\</span><span class="s1">right</span><span class="se">\\</span><span class="s1">}}}}{{3N}}</span><span class="se">\\</span><span class="s1">right)^</span><span class="se">\\</span><span class="s1">frac{{1}}{{5}}</span><span class="se">\\</span><span class="s1">approx</span><span class="si">{:.03f}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">suggested_bandwidth</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">calculate_gaussian_kde</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bandwidth</span><span class="p">,</span> <span class="n">grid</span><span class="p">):</span>
     <span class="c1">## Calculate a matrix of (x_grid_j - x_i)^2 </span>
@@ -14094,7 +14094,7 @@ $$<p>Which is equal to:</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>The tumb rule suggested bandwidth is $\left(\frac{4\cdot\text{std}\left\{x_i\right\}}{3N}\right)^\frac{1}{5}\approx0.775$</p>
+<p><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS_CHTML'></script>The rule of thumb suggested bandwidth is $\left(\frac{4\cdot\text{std}\left\{x_i\right\}}{3N}\right)^\frac{1}{5}\approx0.775$</p>
 </div>
 
 </div>
@@ -14213,7 +14213,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="2)">2)<a class="anchor-link" href="#2)">&#182;</a></h4><p>Since there is a slightly higher probability of $Y$ being equal to 1 our constant prediction prediction would be:</p>
+<h4 id="2)">2)<a class="anchor-link" href="#2)">&#182;</a></h4><p>Since there is a slightly higher probability of $Y$ being equal to 1 our constant prediction would be:</p>
 $$
 \hat{y}=\underset{y\in\left\{0,1\right\}}{\arg\max}\ \ p_Y\left(y\right)=1
 $$

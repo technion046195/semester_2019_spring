@@ -13140,7 +13140,7 @@ div#notebook {
 <h2><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/plasticine/100/000000/slot-machine.png"> A Random Phenomenon</h2>
 <p>In most cases in machine learning, we will describe the process which generates the data as a random phenomenon.</p>
 <p>Let us have a short recap of the concepts we use to handle random phenomenons. As an example we will take a look at the following random phenomenon:</p>
-<blockquote><p>We take a glass full of juice and pure it on the floor (don't try this at home) and look at the shape of the resulting spill.</p>
+<blockquote><p>We take a glass full of juice and pour it on the floor (don't try this at home) and look at the shape of the resulting spill.</p>
 </blockquote>
 <p>Below is a table defining some of the concepts which we will be using when working with random phenomenons, along with the example of spilling the glass of juice.</p>
 
@@ -13251,7 +13251,7 @@ $$</p>
 <p>The PDF of a random variable $X$ is usually denoted by $f_X\left(x\right)$ or $p_X\left(x\right)$ and is defined as a function for which:</p>
 $$
 F_X\left(x\right)=\int_{-\infty}^{x}p_X\left(x\right)dx
-$$<p>If $F_X\left(x\right)$ is differentiable the:</p>
+$$<p>If $F_X\left(x\right)$ is differentiable then:</p>
 $$
 p_X\left(x\right)=\frac{d}{dx}F_X\left(x\right)
 $$
@@ -13300,7 +13300,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Empirical-Measure">Empirical Measure<a class="anchor-link" href="#Empirical-Measure">&#182;</a></h3><p>Before evaluating distributions let us define the empirical measure and empirical mean.</p>
+<h3 id="Empirical-Measure">Empirical Measure<a class="anchor-link" href="#Empirical-Measure">&#182;</a></h3><p>Before we look at evaluating distributions, let us start by defining the empirical measure and empirical mean.</p>
 <p>The empirical measure is an estimation of a probability measure given a set of samples. Using the following notation:</p>
 <ul>
 <li>$N$ - the number of samples in the dataset.</li>
@@ -13361,7 +13361,7 @@ $$</p>
 $$
 \hat{F}_{X}\left(x\right)=\tfrac{1}{N}\sum_{i=1}^N I\left\{x_i \leq x\right\}
 $$</p>
-<p>The ECDF results in a non-continues CDF which is a sum of step functions.</p>
+<p>The ECDF results in a non-continuous CDF which is a sum of step functions.</p>
 
 </div>
 </div>
@@ -13390,7 +13390,7 @@ $$</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The selection of the bins significantly effects how well the histogram approximates the PDF. A common thumb rule for selecting the bins is to divide the range of values into $\sqrt{N}$ equal bins.</p>
+<p>The selection of the bins significantly effects how well the histogram approximates the PDF. A common rule of thumb for selecting the bins is to divide the range of values into $\sqrt{N}$ equal bins.</p>
 
 </div>
 </div>
@@ -13419,7 +13419,7 @@ $$<p>Two common choices of the Parzen window are:</p>
 <li>A Gaussian: $\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{x^2}{2}\right)$</li>
 <li>A rectangular function $I\left\{\left|x\right|\leq0.5\right\}$</li>
 </ul>
-<p>A thumb rule for selecting the bandwidth for the Gaussian window is: $\left(\frac{4\cdot\text{std}\left\{x_i\right\}}{3N}\right)^\frac{1}{5}$</p>
+<p>A rule of thumb for selecting the bandwidth for the Gaussian window is: $\left(\frac{4\cdot\text{std}\left\{x_i\right\}}{3N}\right)^\frac{1}{5}$</p>
 
 </div>
 </div>
@@ -13439,7 +13439,7 @@ $$<p>Two common choices of the Parzen window are:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%html</span>

@@ -1,7 +1,7 @@
 /* Fonts */
 /* Chalkboard font: KG Second Chances Sketch */
 @font-face {font-family: "KG Second Chances Sketch";
-    url("../lib/font/kg-second-chances-sketch.ttf") format("truetype");
+    src: url("../lib/font/kg-second-chances-sketch.ttf") format("truetype");
 }
 /* Chalkboard font: KG Second Chances Sketch */
 @font-face {font-family: "Ultra";
@@ -9,6 +9,14 @@
 }
 
 .reveal section img { background:none; border:none; box-shadow:none; }
+
+.rendered_html th{
+    text-align:left;
+}
+
+.rendered_html td{
+    text-align:left;
+}
 
 /* Workshop title */
 #notebook-container h1.workshop-title{
