@@ -13151,13 +13151,6 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/plasticine/100/000000/numbered-list.png"> Structure</h1>
-<p>Apart from the first one, the workshops will have the following structure:</p>
-<ul>
-<li>A separate background section in which we will introduce the new topics. In class, we will only go through the highlights of this section.</li>
-<li>The main example section in which we will apply our tools to a given problem. We will usually do it in an iterative way of trial and error. This section will be accompanied by the code for the solution of the problem. In class, we will not dive into the code but only give a general overview of what it does. </li>
-<li>Some of the workshops will conclude with a theoretical section in which we will discuss and solve some more theoretical questions usually unrelated to the problem from the previous section.</li>
-</ul>
 <h2 id="Relation-to-Homework-Assignment">Relation to Homework Assignment<a class="anchor-link" href="#Relation-to-Homework-Assignment">&#182;</a></h2><p>The hands-on part ("wet" part) of the homework assignment will be of the same form of implementation section of the workshops.</p>
 <h2 id="A-comment-about-the-code">A comment about the code<a class="anchor-link" href="#A-comment-about-the-code">&#182;</a></h2><p>In many cases, the code and algorithms in these workshops are written in a very inefficient way. We have preferred to keep the code readable and as close as possible to the algorithm described in class. In almost all cases, there already exist packages implementing these algorithms efficiently and robustly, when possible we have tried to give references to these implementations.</p>
 
@@ -13179,11 +13172,11 @@ div#notebook {
 <h2>Why <img style="display:inline;height:50px" height="50px" src="https://www.python.org/static/community_logos/python-logo-master-v3-TM.png">?</h2>
 <p>Here are some motivational points for why we decided on teaching using Python, and why should you learn it?</p>
 <ul>
+<li>It is a very powerful programing language and yet very simple to learn and to get started with. (<a href="https://xkcd.com/353/">See what XKCD has to say about it</a>)</li>
 <li>It is currently one of the most popular programming languages. (It is the 3rd most popular language, after C and Java, <a href="https://www.tiobe.com/tiobe-index/">according to this survey</a>)</li>
 <li>Almost all new frameworks in the field of machine learning are developed for python: PyTorch, TensorFlow, Keras, etc.</li>
-<li>It is a very powerful programing language and yet very simple to learn and to get started with. (<a href="https://xkcd.com/353/">See what XKCD has to say about it</a>)</li>
-<li>It's open-source (=&gt; free) with a huge community behind it.</li>
 <li>It has a ridiculously rich set of packages for almost any task. From basic mathematical tools(<a href="http://www.numpy.org/">basic numeric</a>, <a href="https://www.scipy.org/scipylib/index.html">advance numerics</a>, <a href="https://www.sympy.org">symbolic math</a> <a href="https://pandas.pydata.org/">data handling</a>, <a href="https://mode.com/blog/python-data-visualization-libraries">visualizing</a>, etc.), through a range of advanced frameworks for <a href="https://www.kdnuggets.com/2017/02/python-deep-learning-frameworks-overview.html">deep learning</a>, <a href="https://wiki.python.org/moin/ParallelProcessing">distributed computing</a>, <a href="https://www.djangoproject.com/">web servers</a>, etc. and up to stuff such as a complete framework for writing <a href="https://www.pygame.org">simple games</a></li>
+<li>It's open-source (=&gt; free) with a huge community behind it.</li>
 </ul>
 
 </div>
@@ -13593,12 +13586,26 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-Task-and-the-Goal\n&quot;,">The Task and the Goal\n",<a class="anchor-link" href="#The-Task-and-the-Goal\n&quot;,">&#182;</a></h3><p>As stated before, in this problem we would like to come up with a method, for guessing, or predicting whether or not a passenger on board the Titanic has survived the crash based on his properties.</p>
+<p>i.e., we are looking for a function which maps from the input space of gender and class, $\boldsymbol{x}$, into the binary space of the survival indicator, $y$:</p>
+$$
+\hat{y}=h\left(\boldsymbol{x}\right)
+$$<p>Where we have defined $\hat{y}$ as our prediction for the input $\boldsymbol{x}$.</p>
+<p><em>We will later in this course define these type of problems as binary classification problems</em>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Evaluation-Method:-The-Misclassification-Rate">Evaluation Method: The Misclassification Rate<a class="anchor-link" href="#Evaluation-Method:-The-Misclassification-Rate">&#182;</a></h2><p>We still have not formally define what we mean by making a good prediction. In order to be able to pick the best prediction function, we must first define a way to evaluate different functions.</p>
 <p>We would usually want to be able to assign a numeric score of how <strong>bad</strong> a prediction function performs and then strive to pick the function with the lowest score. We would call this function the risk function.</p>
 <p>In this case, we will use a risk function called <em>the misclassification rate</em>. The misclassification rate is defined as the prediction errors a function makes on the data. Denoting:</p>
 <ul>
-<li>$N$ - as the number of sample in the data.</li>
+<li>$N$ - the number of sample in the dataset.</li>
 <li>$\boldsymbol{x}_i$ - the person parameters in the $i$'s sample, i.e., the vector of $\left(\text{gender},\text{class}\right)$ of the $i$'s passenger.</li>
+<li>$I\left\{\text{condition}\right\}$- an indicator function returning 1 if the condition is true and 0 otherwise</li>
 </ul>
 <p>The risk would be:</p>
 $$
@@ -13612,7 +13619,7 @@ $$<p><strong>A comment about naming</strong>: In many places, this function appe
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Splitting-the-dataset">Splitting the dataset<a class="anchor-link" href="#Splitting-the-dataset">&#182;</a></h2><p>We will be using our dataset in two different tasks:</p>
+<h2 id="Splitting-the-dataset">Splitting the dataset<a class="anchor-link" href="#Splitting-the-dataset">&#182;</a></h2><p>We will be using our dataset for two different tasks:</p>
 <ul>
 <li>Producing the prediction function.</li>
 <li>Evaluating the performance.</li>
@@ -13877,7 +13884,7 @@ $$</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/color/96/000000/speedometer.png"> Performance evaluation</h1>
+<h1><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/color/96/000000/speedometer.png"> Performance Evaluation</h1>
 <p>As stated before would like to do the evaluating of the risk on the test set. Let us calculate the risk using the test set.</p>
 
 </div>
@@ -13930,7 +13937,7 @@ $$</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/color/96/000000/idea-sharing.png"> Model &amp; Learning method suggestion - 2nd Attempt</h1>
+<h1><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/color/96/000000/idea-sharing.png"> Model &amp; Learning Method Suggestion - 2nd Attempt</h1>
 <p>Let us now return to the full model for $h_\boldsymbol{\theta}\left(\boldsymbol{x}\right)$ which covers all the possible all possible $2^6$ combinations for selecting $\boldsymbol{\theta}=\left(\theta_{0,1},..,\theta_{1,3}\right)^T$.</p>
 <p>It could be shown that in this case, that we can find the optimal selection of the $\theta_{m,n}$'s by looking at each one of them individually and minimize the risk on the group of passengers with $X=\left(m,n\right)$. I.e.</p>
 $$
@@ -14292,7 +14299,7 @@ $$<p>with $m\in\left\{0,1\right\}$ (the gender) and $n\in\left\{1,2,3\right\}$ (
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/color/96/000000/speedometer.png"> Performance evaluation</h1>
+<h1><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/color/96/000000/speedometer.png"> Performance Evaluation</h1>
 <p>Let us calculate the risk for this prediction function</p>
 
 </div>
