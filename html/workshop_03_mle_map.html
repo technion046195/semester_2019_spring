@@ -14093,8 +14093,8 @@ $$<p>($\Gamma$ here is the <a href="https://en.wikipedia.org/wiki/Gamma_function
 <h1><img style="display:inline;height:50px" height="50px" src="https://img.icons8.com/plasticine/100/000000/create-new.png"> Exercise 3.4 - MAP and a Toy Model</h1>
 <p>In this exercise we will take a look at a very simple toy example. Consider the following process:</p>
 <ol>
-<li>A random number $a$ is generated following the normal distribution: $A \sim N\left(0, \sigma_A\right)$</li>
-<li>A series of random numbers $\left\{x_i\right\}$ is then generated independently following the normal distribution: $X \sim N\left(a, \sigma_X\right)$</li>
+<li>A random number $a$ is generated once following the normal distribution: $a \sim N\left(0, \sigma_A^2\right)$</li>
+<li>A series of random numbers $\left\{x_i\right\}$ is then generated independently following the normal distribution: $X \sim N\left(a, \sigma_X^2\right)$</li>
 </ol>
 <p>We would look at a few cases of estimating the distribution of $X$.</p>
 <p>Questions:</p>
@@ -14115,7 +14115,9 @@ $$<p>($\Gamma$ here is the <a href="https://en.wikipedia.org/wiki/Gamma_function
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Solution-3.3">Solution 3.3<a class="anchor-link" href="#Solution-3.3">&#182;</a></h3><h4 id="1)">1)<a class="anchor-link" href="#1)">&#182;</a></h4><p>Under the MAP approach we are looking for the model's optimal parameters according to:</p>
+<h3 id="Solution-3.3">Solution 3.3<a class="anchor-link" href="#Solution-3.3">&#182;</a></h3><h4 id="1)">1)<a class="anchor-link" href="#1)">&#182;</a></h4><p>Here we assume that the entire model is known including $\sigma_A$ and $\sigma_X$. However following the MAP approach we would like to find the specific parameters of of the distribution of the data $\left\{x_i\right\}$ which are most probable given the prior distribution and the data. In this case, of a normal distribution with a known standard deviation, the only parameter of the model is the distribution's mean value $a$, therefore we will define the vector of parameters $\boldsymbol{\theta}=\left[a\right]$.
+Like always, we will use $\theta$ to</p>
+<p>Under this approach we are looking for the model's optimal parameters according to:</p>
 $$
 \begin{align*}
 \boldsymbol{\theta}^*
@@ -14125,7 +14127,7 @@ $$
 &amp; = \underset{\boldsymbol{\theta}}{\arg\min}\ N\log\left(\sqrt{2\pi}\sigma_X\right)+\frac{1}{2\sigma_X^2}\sum_i\left(x_i-a\right)^2 + \log\left(\sqrt{2\pi}\sigma_A\right)+\frac{1}{2\sigma_A^2}a^2\\
 &amp; = \underset{\boldsymbol{\theta}}{\arg\min}\ \frac{1}{2\sigma_X^2}\sum_i\left(x_i-a\right)^2 + \frac{1}{2\sigma_A^2}a^2
 \end{align*}
-$$<p>In this case, of a normal distribution with a known standard deviation, the only parameter of in the model is the distribution's mean value $a$. Therefore $\boldsymbol{\theta}=\left[a\right]$. We will find $\boldsymbol{\theta}^*$ by differentiating and compare to zero:</p>
+$$<p>We will find $\boldsymbol{\theta}^*$ by differentiating and compare to zero:</p>
 $$
 \begin{align*}
 &amp; \frac{\partial}{\partial a}\left[\frac{1}{2\sigma_X^2}\sum_i\left(x_i-a\right)^2 + \frac{1}{2\sigma_A^2}a^2\right] = 0 \\

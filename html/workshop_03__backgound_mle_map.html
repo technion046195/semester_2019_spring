@@ -13146,16 +13146,17 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Bayesian-Inference">Bayesian Inference<a class="anchor-link" href="#Bayesian-Inference">&#182;</a></h1><p>Under this approach, we assume that the unknown model parameters $\boldsymbol{\Theta}$ are random variables which have been drawn from some known distribution $p_\boldsymbol{\Theta}$, called the <strong>prior distribution</strong> (or the <strong>a priori distribution</strong>).</p>
-<p>Under the Bayesian approach, our model for the distribution of the data $\boldsymbol{x}$, given the parameters, is described through the conditional probability $p_{\boldsymbol{X}|\boldsymbol{\Theta}}$</p>
+<h1 id="Bayesian-Inference">Bayesian Inference<a class="anchor-link" href="#Bayesian-Inference">&#182;</a></h1><p>Under this approach, we assume that the unknown model parameters $\boldsymbol{\tilde{\theta}}$ are random variables which have been drawn from some known distribution $p_\boldsymbol{\tilde{\theta}}$, called the <strong>prior distribution</strong> (or the <strong>a priori distribution</strong>).</p>
+<p>Under the Bayesian approach, our model for the distribution of the data $\boldsymbol{x}$, given the parameters, is described through the conditional probability $p_{\boldsymbol{X}|\boldsymbol{\tilde{\theta}}}$</p>
 <p>Based on the data, we would update our belief of the distribution of the parameters using Bayes' rule:</p>
 $$
-p_{\boldsymbol{\Theta}|\boldsymbol{X}}\left(\boldsymbol{\theta}|\boldsymbol{x}\right)=\frac{
-p_{\boldsymbol{X}|\boldsymbol{\Theta}}\left(\boldsymbol{x}|\boldsymbol{\theta}\right)
-p_{\boldsymbol{\Theta}}\left(\boldsymbol{\theta}\right)}{
+p_{\boldsymbol{\tilde{\theta}}|\boldsymbol{X}}\left(\boldsymbol{\theta}|\boldsymbol{x}\right)=\frac{
+p_{\boldsymbol{X}|\boldsymbol{\tilde{\theta}}}\left(\boldsymbol{x}|\boldsymbol{\theta}\right)
+p_{\boldsymbol{\tilde{\theta}}}\left(\boldsymbol{\theta}\right)}{
 p_{\boldsymbol{X}}\left(\boldsymbol{x}\right)
 }
-$$<p>The conditional probability $p_{\boldsymbol{\Theta}|\boldsymbol{X}}$ is called the <strong>posterior distribution</strong> (or the <strong>a posteriori distribution</strong>).</p>
+$$<p>(Here $\boldsymbol{\tilde{\theta}}$ is a vector of random variables and $\boldsymbol{\theta}$ is a realization of it)</p>
+<p>The conditional probability $p_{\boldsymbol{\tilde{\theta}}|\boldsymbol{X}}$ is called the <strong>posterior distribution</strong> (or the <strong>a posteriori distribution</strong>).</p>
 
 </div>
 </div>
@@ -13165,8 +13166,8 @@ $$<p>The conditional probability $p_{\boldsymbol{\Theta}|\boldsymbol{X}}$ is cal
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us give an interpretation to each of the terms:</p>
 <ul>
-<li>$p_{\boldsymbol{X}|\boldsymbol{\Theta}}\left(\boldsymbol{x}|\boldsymbol{\theta}\right)$ - The likelihood: How good a given $\boldsymbol{\theta}$ explains the measured data.</li>
-<li>$p_{\boldsymbol{\Theta}}\left(\boldsymbol{\theta}\right)$ - The prior distribution: How probable is it for the random variable $\boldsymbol{\Theta}$ to be equal to a specific set of values $\boldsymbol{\theta}$.</li>
+<li>$p_{\boldsymbol{X}|\boldsymbol{\tilde{\theta}}}\left(\boldsymbol{x}|\boldsymbol{\theta}\right)$ - The likelihood: How good a given $\boldsymbol{\theta}$ explains the measured data.</li>
+<li>$p_{\boldsymbol{\tilde{\theta}}}\left(\boldsymbol{\theta}\right)$ - The prior distribution: How probable is it for the random variable $\boldsymbol{\tilde{\theta}}$ to be equal to a specific set of values $\boldsymbol{\theta}$.</li>
 <li>$p_{\boldsymbol{X}}\left(\boldsymbol{x}\right)$ - The model evidence: How probable is it for the random variable $\boldsymbol{X}$ to be equal to the actual measured data $\boldsymbol{x}$. This is based on the complete model, unrelated related to any specific value of $\boldsymbol{\theta}$. This term is simply the normalization factor which is necessary for making the posterior distribution a valid probability</li>
 </ul>
 
@@ -13214,6 +13215,7 @@ $$</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Frequentist-Inference">Frequentist Inference<a class="anchor-link" href="#Frequentist-Inference">&#182;</a></h1><p>Under this approach, we assume that the unknown model parameters are some constant unknown parameters without any distribution related to them. Under the frequentist approach, our model for the distribution of the data based on the parameters is described as a parametric probability function $p_{\boldsymbol{X}}\left(\boldsymbol{x}\ ;\boldsymbol{\theta}\right)$</p>
+<p><strong>A comment</strong>: Since in this case $\boldsymbol{\theta}$ is no longer a random variable, we have used here  $p\left(\cdot;\cdot\right)$ to emphasize that $\boldsymbol{\theta}$ is a prameter of $p$. In the Bayesian case we have used $p\left(\cdot|\cdot\right)$ to donate the conditional probability. This distinction is not always made and in the lectures for example we will be using $p\left(\cdot|\cdot\right)$ for both cases.</p>
 <p>Based on the data $\boldsymbol{x}$, the likelihood function is defined as $\mathcal{L}\left(\boldsymbol{\theta};\boldsymbol{x}\right)=p_{\boldsymbol{X}}\left(\boldsymbol{x}\ ;\boldsymbol{\theta}\right)$.</p>
 <p>This is merely a change of notation to distinguish the change of roles between $\boldsymbol{x}$ and $\boldsymbol{\theta}$. While the probability function is a function of $\boldsymbol{x}$, and we assume that $\boldsymbol{\theta}$ is known, the likelihood function is a function of $\boldsymbol{\theta}$, and we assume that $\boldsymbol{x}$ is known.</p>
 <p>For simplicity we would also define the log-likelihood function: $l\left(\boldsymbol{\theta};\boldsymbol{x}\right)=\log\left(\mathcal{L}\left(\boldsymbol{\theta};\boldsymbol{x}\right)\right)$</p>
