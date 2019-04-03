@@ -11,6 +11,16 @@
 
 /* reveal.js */
 /* ========= */
+
+/* Workshop title */
+.reveal h1.workshop-title{
+    font-size:100px;
+    line-height:2;
+    font-family:KG Second Chances Sketch;
+    color:white;
+    font-weight:normal;
+}
+
 /* Images */
 .reveal section img {
     background:none !important;

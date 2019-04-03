@@ -1,4 +1,4 @@
-<!-- .slide: class="center" data-foobackground="../media/black-board.jpg" -->
+<!-- .slide: class="center" -->
 
 <h1 style="font-family:'KG Second Chances Sketch';font-size:100px;line-height:2;color:white;font-weight:normal;">Workshop 1<br>Introduction</h1>
 
