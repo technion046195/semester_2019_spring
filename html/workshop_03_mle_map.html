@@ -14099,7 +14099,7 @@ $$<p>($\Gamma$ here is the <a href="https://en.wikipedia.org/wiki/Gamma_function
 <p>We would look at a few cases of estimating the distribution of $X$.</p>
 <p>Questions:</p>
 <ol>
-<li><p>Start by using the exact model which generates the data, i.e. a normal distribution with a known standard deviation of $\sigma_X$ and mean value which is normally distributed with mean value 0 and a standard deviation of $\sigma_A$. Use the  MAP approach to calculate the estimated distribution of $X$ given a dataset $\left\{x_i\right\}$.</p>
+<li><p>Start by using the exact model which generates the data, i.e. a normal distribution with a known standard deviation of $\sigma_X$ and mean value which is normally distributed with mean value 0 and a standard deviation of $\sigma_A$. Use the  MAP approach to estimate the distribution of $X$ given a dataset $\left\{x_i\right\}$.</p>
 </li>
 <li><p>Use $\sigma_A=1$ and $\sigma_X=3$ to randomly generate the dataset $\left\{x_i\right\}$ with a size of 10 samples. Using the MAP estimation, calculate the actual parameters and the estimation error between the true and the estimated mean value of $X$.</p>
 </li>
@@ -14115,8 +14115,7 @@ $$<p>($\Gamma$ here is the <a href="https://en.wikipedia.org/wiki/Gamma_function
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Solution-3.3">Solution 3.3<a class="anchor-link" href="#Solution-3.3">&#182;</a></h3><h4 id="1)">1)<a class="anchor-link" href="#1)">&#182;</a></h4><p>Here we assume that the entire model is known including $\sigma_A$ and $\sigma_X$. However following the MAP approach we would like to find the specific parameters of of the distribution of the data $\left\{x_i\right\}$ which are most probable given the prior distribution and the data. In this case, of a normal distribution with a known standard deviation, the only parameter of the model is the distribution's mean value $a$, therefore we will define the vector of parameters $\boldsymbol{\theta}=\left[a\right]$.
-Like always, we will use $\theta$ to</p>
+<h3 id="Solution-3.3">Solution 3.3<a class="anchor-link" href="#Solution-3.3">&#182;</a></h3><h4 id="1)">1)<a class="anchor-link" href="#1)">&#182;</a></h4><p>Here we assume that the entire model is known including $\sigma_A$ and $\sigma_X$. However following the MAP approach we would like to find the specific parameters of of the distribution of the data $\left\{x_i\right\}$ which are most probable given the prior distribution and the data. In this case, of a normal distribution with a known standard deviation, the only parameter of the model is the distribution's mean value $a$, therefore we will define the vector of parameters $\boldsymbol{\theta}=\left[a\right]$.</p>
 <p>Under this approach we are looking for the model's optimal parameters according to:</p>
 $$
 \begin{align*}
@@ -14133,7 +14132,7 @@ $$
 &amp; \frac{\partial}{\partial a}\left[\frac{1}{2\sigma_X^2}\sum_i\left(x_i-a\right)^2 + \frac{1}{2\sigma_A^2}a^2\right] = 0 \\
 \Leftrightarrow &amp; \frac{1}{\sigma_X^2}\sum_i\left(a-x_i\right) + \frac{1}{\sigma_A^2}a = 0 \\
 \Leftrightarrow &amp; \left(\frac{1}{\sigma_A^2}+\frac{N}{\sigma_X^2}\right)a = \frac{\sum_i x_i}{\sigma_X^2} \\
-\Leftrightarrow &amp; a = \frac{\sigma_A^2}{\sigma_X^2/N+\sigma_A^2}\frac{1}{N}\sum_i x_i \\
+\Leftrightarrow &amp; a = \frac{1}{\frac{\sigma_X^2 / N}{\sigma_A^2}+1}\frac{1}{N}\sum_i x_i \\
 \end{align*}
 $$
 </div>
