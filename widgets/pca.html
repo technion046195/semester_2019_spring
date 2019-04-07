@@ -12,13 +12,17 @@
                 Select rotation matrix to rotate the data.
             </div>
             <div class="row">
-                <div class="col-6">
-                    <div id="fig1" style="height: 500px;"></div>
+                <div class="col-9">
+                    <div id="fig1" style="height: 600px;"></div>
                 </div>
-                <div class="col-6">
-                    <div id="fig2" style="height: 500px;"></div>
+                <div class="col-3">
+                    <div class="row">
+                        Covariance matrix after rotation:
+                    </div>
+                    <div class="row">
+                        <span id=covMatText></span>
+                    </div>
                 </div>
-            </div>
             <div class="row">
                 <div class="col">
                     Select rotation matrix
@@ -38,14 +42,6 @@
                     <button id="matrixDButton" class="btn btn-primary">$$D=\begin{bmatrix}-0.087  & 0.68  & 0.72 \\ -0.88  & 0.29 & -0.37 \\ -0.46 & -0.68  & 0.57  \\ \end{bmatrix}$$</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-3">
-                    Covariance matrix after rotation:
-                </div>
-                <div class="col-3">
-                    <span id=covMatText></span>
-                </div>
-            </div>
         </div>
         <script>
             App = class {
@@ -62,6 +58,8 @@
 
                     this.plot_layout1 = {
                         scene:{
+                            aspectmode: "manual",
+                            aspectratio: {x: 1, y: 1, z: 1},
                             xaxis: {
                                 range: [-10, 10]
                             },
@@ -81,35 +79,21 @@
                         type: 'scatter3d',
                         mode: 'markers',
                         marker: {
-                            size: 3,
+                            size: 5,
                             opacity: 0.8
-                        }
-                    }];
-
-                    this.plot_layout2 = {
-                        scene:{
-                            xaxis: {
-                                range: [-10, 10]
-                            },
-                            yaxis: {
-                                range: [-10, 10]
-                            },
-                            zaxis: {
-                                range: [-10, 10]
-                            }
                         },
-                    };
-
-                    this.plot_data2 = [{
+                        name: 'Original'
+                    },{
                         x: [],
                         y: [],
                         z: [],
                         type: 'scatter3d',
                         mode: 'markers',
                         marker: {
-                            size: 3,
+                            size: 5,
                             opacity: 0.8
-                        }
+                        },
+                        name: 'Rotated'
                     }];
 
                 }
@@ -192,12 +176,11 @@
                         cov33 += data_rot3[i] * data_rot3[i] / this.data.length;
                     }
 
-                    this.plot_data2[0].x = data_rot1;
-                    this.plot_data2[0].y = data_rot2;
-                    this.plot_data2[0].z = data_rot3;
+                    this.plot_data1[1].x = data_rot1;
+                    this.plot_data1[1].y = data_rot2;
+                    this.plot_data1[1].z = data_rot3;
 
                     Plotly.react('fig1', this.plot_data1, this.plot_layout1, {responsive: true});
-                    Plotly.react('fig2', this.plot_data2, this.plot_layout2, {responsive: true});
 
                     this.cov_mat_text.innerHTML = `$$\\begin{bmatrix}${cov11.toFixed(2)}  & ${cov12.toFixed(2)}  & ${cov13.toFixed(2)} \\\\ ${cov12.toFixed(2)}  & ${cov22.toFixed(2)} & ${cov23.toFixed(2)} \\\\ ${cov13.toFixed(2)} & ${cov23.toFixed(2)}  & ${cov33.toFixed(2)}  \\end{bmatrix}$$`;
                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
