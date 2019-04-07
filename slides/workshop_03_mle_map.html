@@ -11,9 +11,9 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie Flower">
 
-		<!-- Import Reveal's css-->
+		<!-- Import Revel's css-->
 		<link rel="stylesheet" href="../lib/css/reveal.min.css">
-		<link rel="stylesheet" href="../lib/css/reveal_theme/black.css">
+		<link rel="stylesheet" href="../lib/css/revel_theme/black.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="../lib/css/github.css">
@@ -23,7 +23,7 @@
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
 			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? '../lib/css/reveal_print/pdf.css' : '../lib/css/reveal_print/paper.css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../lib/css/revel_print/pdf.css' : '../lib/css/revel_print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
         <style>
@@ -62,10 +62,10 @@
                 transition: 'slide',
                 history: true,
 				dependencies: [
-					{ src: 'plugin/print-pdf/print-pdf.js' },
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
