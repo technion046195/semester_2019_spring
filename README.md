@@ -4,7 +4,7 @@ Semester: Spring 2019
 
 This repository contains the workshops, homework assignment and some auxiliary material for the course.
 
-Web ste on Github pages: [link](https://technion046195.github.io/semester_2019_spring/)
+Web site on Github pages: [link](https://technion046195.github.io/semester_2019_spring/)
 
 ## Two suggested options for viewing the notebooks online
 
